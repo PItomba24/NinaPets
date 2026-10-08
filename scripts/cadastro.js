@@ -1,4 +1,3 @@
-
 import { auth, database } from "./firebase.js";
 
 import {
@@ -11,148 +10,129 @@ import {
     set
 } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
 
-const cadastroForm = document.getElementById("cadastroForm");
-const btnVoltarLogin = document.getElementById("btnVoltarLogin");
-const mensagemCadastro = document.getElementById("mensagemCadastro");
-const btnCadastrar = document.getElementById("btnCadastrar");
+const formulario = document.getElementById("cadastroForm");
+const mensagem = document.getElementById("mensagemCadastro");
+const botao = document.getElementById("btnCadastrar");
+const voltar = document.getElementById("btnVoltarLogin");
 
+const popupSucesso = document.getElementById("popupSucesso");
+const popupTitulo = document.getElementById("popupTitulo");
+const popupTexto = document.getElementById("popupTexto");
+const popupBotao = document.getElementById("popupBotao");
 
-/* =========================
-   EXIBIR MENSAGENS
-========================= */
-
-function mostrarMensagem(texto, cor = "red") {
-    mensagemCadastro.textContent = texto;
-    mensagemCadastro.style.color = cor;
+function exibirMensagem(texto, tipo) {
+    mensagem.textContent = texto;
+    mensagem.className = "mensagem-sistema " + tipo;
 }
 
+function abrirPopup(titulo, texto) {
+    popupTitulo.textContent = titulo;
+    popupTexto.textContent = texto;
+    popupSucesso.classList.add("ativo");
+}
 
-/* =========================
-   CADASTRO DE USUÁRIO
-========================= */
+function fecharPopup() {
+    popupSucesso.classList.remove("ativo");
+}
 
-cadastroForm.addEventListener("submit", async function (event) {
-
-    event.preventDefault();
+formulario.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
 
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value;
-    const confirmarSenha = document.getElementById("confirmarSenha").value;
+    const confirmar = document.getElementById("confirmarSenha").value;
 
-    mostrarMensagem("");
+    exibirMensagem("", "");
 
-    if (senha !== confirmarSenha) {
-        mostrarMensagem("As senhas não são iguais.");
+    if (senha !== confirmar) {
+        exibirMensagem("As senhas não são iguais.", "erro");
         return;
     }
 
     if (senha.length < 6) {
-        mostrarMensagem("A senha deve possuir pelo menos 6 caracteres.");
+        exibirMensagem(
+            "A senha precisa ter pelo menos 6 caracteres.",
+            "erro"
+        );
         return;
     }
 
-    btnCadastrar.disabled = true;
-    btnCadastrar.textContent = "Criando conta...";
+    botao.disabled = true;
+    botao.textContent = "Criando sua conta...";
 
     let usuarioCriado = null;
-    let dadosSalvos = false;
+    let perfilSalvo = false;
 
     try {
-
-        // Criar conta no Firebase Authentication
-        const credenciais = await createUserWithEmailAndPassword(
+        const resultado = await createUserWithEmailAndPassword(
             auth,
             email,
             senha
         );
 
-        usuarioCriado = credenciais.user;
+        usuarioCriado = resultado.user;
 
-        console.log("Usuário criado:", usuarioCriado.uid);
-
-        // Salvar dados no Realtime Database
         await set(ref(database, "usuarios/" + usuarioCriado.uid), {
             email: usuarioCriado.email,
             dataCadastro: new Date().toISOString()
         });
 
-        dadosSalvos = true;
+        perfilSalvo = true;
 
-        console.log("Dados salvos com sucesso!");
-
-        mostrarMensagem("Conta criada com sucesso!", "green");
-
-        // Encerrar a sessão para realizar login depois
         await signOut(auth);
 
-        // Redirecionar para a tela de login
-        window.location.href = "login.html";
+        formulario.reset();
+        exibirMensagem("", "");
 
-    } catch (error) {
+        abrirPopup(
+            "Conta criada com sucesso!",
+            "Agora você já pode entrar no NinaPets com seu e-mail e sua senha."
+        );
 
-        console.error("Erro no cadastro:", error);
+    } catch (erro) {
+        console.error("Erro no cadastro:", erro);
 
-        if (usuarioCriado && !dadosSalvos) {
-            mostrarMensagem(
-                "Sua conta foi criada, mas não foi possível salvar os dados. Verifique as regras do banco."
+        if (usuarioCriado && !perfilSalvo) {
+            exibirMensagem(
+                "Sua conta foi criada, mas não foi possível salvar o perfil.",
+                "erro"
             );
-            return;
-        }
-
-        if (usuarioCriado && dadosSalvos) {
-            mostrarMensagem(
-                "Conta criada, mas não foi possível finalizar a sessão. Verifique o console."
+        } else if (usuarioCriado) {
+            exibirMensagem(
+                "Sua conta foi criada, mas houve um problema ao finalizar a sessão.",
+                "erro"
             );
-            return;
+        } else {
+            const mensagens = {
+                "auth/email-already-in-use":
+                    "Este e-mail já possui uma conta.",
+                "auth/invalid-email":
+                    "Digite um e-mail válido.",
+                "auth/weak-password":
+                    "Escolha uma senha mais forte.",
+                "auth/operation-not-allowed":
+                    "O cadastro por e-mail ainda não está habilitado.",
+                "auth/network-request-failed":
+                    "Falha de conexão. Verifique sua internet."
+            };
+
+            exibirMensagem(
+                mensagens[erro.code] ||
+                "Não foi possível criar a conta. Tente novamente.",
+                "erro"
+            );
         }
-
-        switch (error.code) {
-
-            case "auth/email-already-in-use":
-                mostrarMensagem("Este e-mail já está cadastrado.");
-                break;
-
-            case "auth/invalid-email":
-                mostrarMensagem("Digite um e-mail válido.");
-                break;
-
-            case "auth/weak-password":
-                mostrarMensagem("A senha é muito fraca.");
-                break;
-
-            case "auth/operation-not-allowed":
-                mostrarMensagem("O cadastro por e-mail e senha não está ativado no Firebase.");
-                break;
-
-            case "auth/network-request-failed":
-                mostrarMensagem("Erro de conexão. Verifique sua internet.");
-                break;
-
-            case "PERMISSION_DENIED":
-            case "permission_denied":
-                mostrarMensagem("Permissão negada pelo banco de dados.");
-                break;
-
-            default:
-                mostrarMensagem(
-                    "Erro ao cadastrar: " + (error.code || error.message)
-                );
-        }
-
     } finally {
-
-        btnCadastrar.disabled = false;
-        btnCadastrar.textContent = "Criar conta";
-
+        botao.disabled = false;
+        botao.innerHTML = 'Criar conta <span>→</span>';
     }
-
 });
 
+popupBotao.addEventListener("click", () => {
+    fecharPopup();
+    window.location.href = "login.html";
+});
 
-/* =========================
-   VOLTAR PARA LOGIN
-========================= */
-
-btnVoltarLogin.addEventListener("click", function () {
+voltar.addEventListener("click", () => {
     window.location.href = "login.html";
 });

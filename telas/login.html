@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,29 +6,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PetFeeder - Login</title>
+    <title>NinaPets | Entrar</title>
 
     <link rel="stylesheet" href="../estilos/login.css">
 </head>
 
 <body>
 
+    <header class="cabecalho">
+        <a href="inicio.html" class="marca">
+            <span class="marca-icone">🐾</span>
+            <span>Nina<span class="destaque">Pets</span></span>
+        </a>
+
+        <span class="cabecalho-texto">
+            Tecnologia e carinho para seu pet
+        </span>
+    </header>
+
     <main class="login-container">
 
         <section class="login-card">
 
-            <div class="logo">
-                <div class="logo-circulo">
-                    🐾
-                </div>
+            <div class="logo-circulo">
+                🐾
             </div>
 
-            <h1>Pet<span>Feeder</span></h1>
+            <h1>Nina<span>Pets</span></h1>
 
-            <h2>Entrar</h2>
+            <h2>Bem-vindo de volta!</h2>
 
             <p class="descricao">
-                Entre na sua conta para continuar.
+                Entre na sua conta para continuar cuidando
+                de quem você mais ama.
             </p>
 
             <form id="loginForm">
@@ -40,6 +51,7 @@
                         id="email"
                         name="email"
                         placeholder="Digite seu e-mail"
+                        autocomplete="email"
                         required
                     >
                 </div>
@@ -52,17 +64,31 @@
                         id="senha"
                         name="senha"
                         placeholder="Digite sua senha"
+                        autocomplete="current-password"
                         required
                     >
                 </div>
 
-                <button type="submit" class="btn-entrar">
+                <p
+                    id="mensagemLogin"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+                <button
+                    type="submit"
+                    class="btn-entrar"
+                    id="btnEntrar">
                     Entrar
+                    <span aria-hidden="true">→</span>
                 </button>
 
             </form>
 
-            <button id="btnRecuperar" class="link-button">
+            <button
+                type="button"
+                id="btnRecuperar"
+                class="link-button">
                 Esqueci minha senha
             </button>
 
@@ -74,16 +100,29 @@
                 Ainda não possui uma conta?
             </p>
 
-            <button id="btnCadastro" class="btn-cadastro">
+            <button
+                type="button"
+                id="btnCadastro"
+                class="btn-cadastro">
                 Criar uma conta
             </button>
+
+            <a href="inicio.html" class="voltar-inicio">
+                ← Voltar para o início
+            </a>
 
         </section>
 
     </main>
 
-    <script src="../scripts/login.js"></script>
+    <footer class="rodape">
+        © 2026 NinaPets. Desenvolvido com carinho.
+    </footer>
+
+    <script
+        type="module"
+        src="../scripts/login.js">
+    </script>
 
 </body>
-
 </html>

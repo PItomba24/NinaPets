@@ -1,82 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PetFeeder - Recuperar senha</title>
-
-    <link
-        rel="stylesheet"
-        href="../estilos/recuperar-senha.css"
-    >
+    <title>NinaPets | Recuperar senha</title>
+    <link rel="stylesheet" href="../estilos/recuperar-senha.css">
 </head>
 
 <body>
+    <header class="cabecalho">
+        <a href="inicio.html" class="marca">
+            <span class="marca-icone">🐾</span>
+            <span>Nina<span class="destaque">Pets</span></span>
+        </a>
 
-    <main class="recuperar-container">
+        <span class="cabecalho-texto">
+            Tecnologia e carinho para seu pet
+        </span>
+    </header>
 
-        <section class="recuperar-card">
+    <main class="pagina-container">
+        <section class="formulario-card">
 
-            <div class="logo-circulo">
-                🐾
-            </div>
+            <div class="logo-circulo">✉️</div>
 
-            <h1>Pet<span>Feeder</span></h1>
-
+            <h1>Nina<span>Pets</span></h1>
             <h2>Recuperar senha</h2>
 
             <p class="descricao">
-                Digite seu e-mail e enviaremos as instruções
-                para recuperar sua senha.
+                Informe seu e-mail para solicitar
+                um link de redefinição de senha.
             </p>
 
-
             <form id="recuperarForm">
-
                 <div class="campo">
-
-                    <label for="email">
-                        E-mail
-                    </label>
-
+                    <label for="email">E-mail</label>
                     <input
                         type="email"
                         id="email"
-                        placeholder="Digite seu e-mail"
+                        placeholder="Digite seu e-mail cadastrado"
+                        autocomplete="email"
                         required
                     >
-
                 </div>
 
+                <div
+                    id="mensagemRecuperacao"
+                    class="mensagem-sistema"
+                    role="status"
+                    aria-live="polite">
+                </div>
 
                 <button
                     type="submit"
-                    class="btn-recuperar">
-
-                    Recuperar senha
-
+                    id="btnRecuperarSenha"
+                    class="botao-principal">
+                    Enviar link <span>→</span>
                 </button>
-
             </form>
 
+            <p class="texto-auxiliar">
+                Lembrou sua senha?
+            </p>
 
             <button
+                type="button"
                 id="btnVoltarLogin"
-                class="btn-voltar">
-
+                class="botao-secundario">
                 Voltar para o login
-
             </button>
 
-        </section>
+            <a href="inicio.html" class="voltar-inicio">
+                ← Voltar para o início
+            </a>
 
+        </section>
     </main>
 
+    <footer class="rodape">
+        © 2026 NinaPets. Desenvolvido com carinho.
+    </footer>
 
-    <script src="../scripts/recuperar-senha.js"></script>
+    <!-- POP-UP -->
+    <div id="popupSucesso" class="popup-fundo">
+        <div class="popup-card">
+            <div class="popup-icone">🐶</div>
+            <h3 id="popupTitulo">Solicitação enviada!</h3>
+            <p id="popupTexto">
+                Verifique seu e-mail para continuar.
+            </p>
+            <button id="popupBotao" class="botao-principal botao-popup">
+                Entendi
+            </button>
+        </div>
+    </div>
 
+    <script type="module" src="../scripts/recuperar-senha.js"></script>
 </body>
-
 </html>

@@ -1,6 +1,14 @@
-/* =========================
-   RESET
-========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --verde: #158a50;
+    --verde-escuro: #104e32;
+    --verde-claro: #e7f6eb;
+    --texto: #22382c;
+    --cinza: #68796e;
+    --fundo: #f7fbf6;
+}
 
 * {
     margin: 0;
@@ -8,317 +16,366 @@
     box-sizing: border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-
+    font-family: 'Nunito', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-    background: linear-gradient(
-        135deg,
-        #168c4b,
-        #0d6f3b
-    );
+/* CABEÇALHO */
 
+.cabecalho {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--verde-escuro);
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.marca-icone {
+    width: 45px;
+    height: 45px;
+    background: var(--verde-claro);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 24px;
 }
 
+.destaque {
+    color: var(--verde);
+}
 
-/* =========================
-   CONTAINER
-========================= */
+.cabecalho-texto {
+    font-size: 14px;
+    color: var(--cinza);
+    font-weight: 700;
+}
+
+/* ÁREA DE LOGIN */
 
 .login-container {
+    flex: 1;
     width: 100%;
-    min-height: 100vh;
+    padding: 30px 20px;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding: 30px;
 }
-
-
-/* =========================
-   CARD
-========================= */
 
 .login-card {
     width: 100%;
-    max-width: 430px;
+    max-width: 450px;
+    padding: 38px 42px;
 
-    background-color: white;
+    background: white;
+    border-radius: 28px;
 
-    padding: 40px;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 65px rgba(18, 80, 42, 0.10);
+    border: 1px solid #e6f0e8;
 
     text-align: center;
-}
 
-
-/* =========================
-   LOGO
-========================= */
-
-.logo {
-    display: flex;
-    justify-content: center;
-
-    margin-bottom: 15px;
+    animation: aparecer 0.7s ease both;
 }
 
 .logo-circulo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 50%;
-
-    background-color: #168c4b;
-
-    color: white;
-
-    font-size: 38px;
+    border-radius: 22px;
+    background: var(--verde-claro);
+    font-size: 37px;
 }
 
-
-/* =========================
-   NOME
-========================= */
-
-h1 {
-    font-size: 30px;
-
-    color: #168c4b;
-
-    margin-bottom: 25px;
+.login-card h1 {
+    color: var(--verde-escuro);
+    font-size: 33px;
+    font-weight: 900;
+    margin-bottom: 18px;
 }
 
-h1 span {
-    color: #d93636;
+.login-card h1 span {
+    color: var(--verde);
 }
 
-
-/* =========================
-   TÍTULO
-========================= */
-
-h2 {
-    font-size: 28px;
-
-    color: #222;
-
+.login-card h2 {
+    color: var(--verde-escuro);
+    font-size: 25px;
+    font-weight: 900;
     margin-bottom: 8px;
 }
 
 .descricao {
-    color: #777;
-
-    font-size: 15px;
-
-    margin-bottom: 25px;
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 26px;
 }
 
-
-/* =========================
-   CAMPOS
-========================= */
+/* FORMULÁRIO */
 
 .campo {
     text-align: left;
-
     margin-bottom: 18px;
 }
 
 .campo label {
     display: block;
-
-    color: #333;
-
+    margin-bottom: 8px;
     font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 7px;
+    font-weight: 800;
+    color: var(--texto);
 }
 
 .campo input {
     width: 100%;
+    height: 52px;
+    padding: 0 16px;
 
-    padding: 13px 15px;
+    border: 1.5px solid #d8e4da;
+    border-radius: 13px;
 
-    border: 1px solid #ccc;
-
-    border-radius: 8px;
-
+    font-family: inherit;
     font-size: 15px;
+    color: var(--texto);
+    background: white;
 
     outline: none;
-
-    transition: border-color 0.2s;
+    transition: 0.3s ease;
 }
 
 .campo input:focus {
-    border-color: #168c4b;
-
-    box-shadow: 0 0 0 2px rgba(22, 140, 75, 0.1);
+    border-color: var(--verde);
+    box-shadow: 0 0 0 4px rgba(21, 138, 80, 0.10);
 }
 
+.campo input::placeholder {
+    color: #93a298;
+}
 
-/* =========================
-   BOTÃO ENTRAR
-========================= */
+#mensagemLogin {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#mensagemLogin:empty {
+    display: none;
+}
+
+/* BOTÃO ENTRAR */
 
 .btn-entrar {
     width: 100%;
-
-    padding: 14px;
+    min-height: 53px;
+    margin-top: 7px;
 
     border: none;
+    border-radius: 14px;
 
-    border-radius: 8px;
-
-    background-color: #168c4b;
-
+    background: linear-gradient(135deg, #1a9b5b, #117343);
     color: white;
 
-    font-size: 16px;
-
-    font-weight: bold;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 900;
 
     cursor: pointer;
 
-    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    box-shadow: 0 8px 22px rgba(21, 138, 80, 0.20);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-entrar:hover {
-    background-color: #0d6f3b;
-
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(21, 138, 80, 0.28);
 }
 
+.btn-entrar:active {
+    transform: scale(0.96);
+}
 
-/* =========================
-   RECUPERAR SENHA
-========================= */
+.btn-entrar:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.btn-entrar span {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.btn-entrar:hover span {
+    transform: translateX(6px);
+}
+
+/* RECUPERAR SENHA */
 
 .link-button {
-    border: none;
-
+    margin-top: 19px;
     background: none;
-
-    color: #d93636;
-
+    border: none;
+    color: var(--verde);
+    font-family: inherit;
+    font-weight: 800;
     font-size: 14px;
-
     cursor: pointer;
-
-    margin-top: 18px;
 }
 
 .link-button:hover {
+    color: var(--verde-escuro);
     text-decoration: underline;
 }
 
-
-/* =========================
-   DIVISOR
-========================= */
+/* DIVISOR */
 
 .divisor {
     display: flex;
-
     align-items: center;
-
-    gap: 10px;
-
-    margin: 25px 0;
+    gap: 15px;
+    margin: 25px 0 19px;
+    color: #99a89d;
+    font-size: 13px;
 }
 
 .divisor::before,
 .divisor::after {
     content: "";
-
-    flex: 1;
-
     height: 1px;
-
-    background-color: #ddd;
+    flex: 1;
+    background: #e1e9e3;
 }
-
-.divisor span {
-    color: #999;
-
-    font-size: 13px;
-}
-
-
-/* =========================
-   CADASTRO
-========================= */
 
 .cadastro-texto {
-    color: #666;
-
     font-size: 14px;
-
-    margin-bottom: 12px;
+    color: var(--cinza);
+    margin-bottom: 13px;
 }
+
+/* BOTÃO CADASTRO */
 
 .btn-cadastro {
     width: 100%;
+    min-height: 50px;
 
-    padding: 13px;
+    background: var(--verde-claro);
+    color: var(--verde-escuro);
 
-    border: 2px solid #168c4b;
+    border: 1.5px solid #c9e9d2;
+    border-radius: 14px;
 
-    border-radius: 8px;
-
-    background-color: white;
-
-    color: #168c4b;
-
+    font-family: inherit;
     font-size: 15px;
-
-    font-weight: bold;
-
+    font-weight: 900;
     cursor: pointer;
 
-    transition: all 0.2s;
+    transition: 0.3s ease;
 }
 
 .btn-cadastro:hover {
-    background-color: #168c4b;
-
-    color: white;
+    background: #d5f0dd;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(21, 138, 80, 0.12);
 }
 
+.btn-cadastro:active {
+    transform: scale(0.97);
+}
 
-/* =========================
-   RESPONSIVIDADE
-========================= */
+/* VOLTAR */
 
-@media (max-width: 500px) {
+.voltar-inicio {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cinza);
+    text-decoration: none;
+}
+
+.voltar-inicio:hover {
+    color: var(--verde);
+}
+
+/* RODAPÉ */
+
+.rodape {
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+    color: var(--cinza);
+}
+
+/* ANIMAÇÕES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        padding: 18px 6%;
+    }
+
+    .cabecalho-texto {
+        display: none;
+    }
 
     .login-container {
-        padding: 15px;
+        padding: 20px 15px;
     }
 
     .login-card {
-        padding: 30px 25px;
+        padding: 30px 24px;
+        border-radius: 22px;
+    }
+
+    .login-card h2 {
+        font-size: 23px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
     }
 }

@@ -1,56 +1,95 @@
-const recuperarForm =
-    document.getElementById("recuperarForm");
+import { auth } from "./firebase.js";
 
-const btnVoltarLogin =
-    document.getElementById("btnVoltarLogin");
+import {
+    sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
+const formulario = document.getElementById("recuperarForm");
+const mensagem = document.getElementById("mensagemRecuperacao");
+const botao = document.getElementById("btnRecuperarSenha");
+const voltar = document.getElementById("btnVoltarLogin");
 
-/* =========================
-   RECUPERAR SENHA
-========================= */
+const popupSucesso = document.getElementById("popupSucesso");
+const popupTitulo = document.getElementById("popupTitulo");
+const popupTexto = document.getElementById("popupTexto");
+const popupBotao = document.getElementById("popupBotao");
 
-recuperarForm.addEventListener("submit", function (event) {
+function exibirMensagem(texto, tipo) {
+    mensagem.textContent = texto;
+    mensagem.className = "mensagem-sistema " + tipo;
+}
 
-    event.preventDefault();
+function abrirPopup(titulo, texto) {
+    popupTitulo.textContent = titulo;
+    popupTexto.textContent = texto;
+    popupSucesso.classList.add("ativo");
+}
 
-    const email =
-        document.getElementById("email").value;
+function fecharPopup() {
+    popupSucesso.classList.remove("ativo");
+}
 
+formulario.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
 
-    if (email === "") {
+    const email = document.getElementById("email").value.trim();
 
-        alert("Digite seu e-mail.");
+    exibirMensagem("", "");
 
+    if (!email) {
+        exibirMensagem("Digite seu e-mail.", "erro");
         return;
     }
 
+    botao.disabled = true;
+    botao.textContent = "Enviando solicitação...";
 
-    /*
-        Por enquanto estamos apenas simulando
-        o envio da recuperação.
+    try {
+        await sendPasswordResetEmail(auth, email);
 
-        No sistema real, aqui seria feita uma
-        solicitação para o servidor.
-    */
+        formulario.reset();
+        exibirMensagem("", "");
 
-    alert(
-        "Se este e-mail estiver cadastrado, " +
-        "você receberá as instruções para " +
-        "recuperar sua senha."
-    );
+        abrirPopup(
+            "Solicitação enviada com sucesso!",
+            "Se existir uma conta vinculada a esse e-mail, você receberá um link para redefinir sua senha. Verifique também a pasta de spam."
+        );
 
+    } catch (erro) {
+        console.error("Erro na recuperação de senha:", erro);
 
-    window.location.href = "login.html";
-
+        if (erro.code === "auth/invalid-email") {
+            exibirMensagem(
+                "Digite um endereço de e-mail válido.",
+                "erro"
+            );
+        } else if (erro.code === "auth/too-many-requests") {
+            exibirMensagem(
+                "Muitas solicitações. Aguarde alguns minutos antes de tentar novamente.",
+                "erro"
+            );
+        } else if (erro.code === "auth/network-request-failed") {
+            exibirMensagem(
+                "Não foi possível conectar. Verifique sua internet.",
+                "erro"
+            );
+        } else {
+            exibirMensagem(
+                "Não foi possível processar a solicitação. Tente novamente mais tarde.",
+                "erro"
+            );
+        }
+    } finally {
+        botao.disabled = false;
+        botao.innerHTML = 'Enviar link <span>→</span>';
+    }
 });
 
-
-/* =========================
-   VOLTAR
-========================= */
-
-btnVoltarLogin.addEventListener("click", function () {
-
+popupBotao.addEventListener("click", () => {
+    fecharPopup();
     window.location.href = "login.html";
+});
 
+voltar.addEventListener("click", () => {
+    window.location.href = "login.html";
 });

@@ -1,39 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PetFeeder - Cadastro</title>
-
+    <title>NinaPets | Criar conta</title>
     <link rel="stylesheet" href="../estilos/cadastro.css">
 </head>
 
 <body>
+    <header class="cabecalho">
+        <a href="inicio.html" class="marca">
+            <span class="marca-icone">🐾</span>
+            <span>Nina<span class="destaque">Pets</span></span>
+        </a>
 
-    <main class="cadastro-container">
+        <span class="cabecalho-texto">
+            Tecnologia e carinho para seu pet
+        </span>
+    </header>
 
-        <section class="cadastro-card">
+    <main class="pagina-container">
+        <section class="formulario-card">
 
-            <div class="logo-circulo">
-                🐾
-            </div>
+            <div class="logo-circulo">🐾</div>
 
-            <h1>Pet<span>Feeder</span></h1>
-
-            <h2>Criar conta</h2>
+            <h1>Nina<span>Pets</span></h1>
+            <h2>Crie sua conta</h2>
 
             <p class="descricao">
-                Cadastre-se para começar a utilizar o PetFeeder.
+                Comece a cuidar da alimentação
+                do seu melhor amigo com carinho
+                e tecnologia.
             </p>
 
             <form id="cadastroForm">
-
                 <div class="campo">
                     <label for="email">E-mail</label>
-
                     <input
                         type="email"
                         id="email"
@@ -45,62 +47,78 @@
 
                 <div class="campo">
                     <label for="senha">Senha</label>
-
                     <input
                         type="password"
                         id="senha"
-                        placeholder="Digite sua senha"
-                        minlength="6"
+                        placeholder="Crie uma senha"
                         autocomplete="new-password"
+                        minlength="6"
                         required
                     >
                 </div>
 
                 <div class="campo">
-                    <label for="confirmarSenha">
-                        Confirmar senha
-                    </label>
-
+                    <label for="confirmarSenha">Confirmar senha</label>
                     <input
                         type="password"
                         id="confirmarSenha"
-                        placeholder="Digite sua senha novamente"
-                        minlength="6"
+                        placeholder="Digite a senha novamente"
                         autocomplete="new-password"
+                        minlength="6"
                         required
                     >
                 </div>
 
-                <p
+                <div
                     id="mensagemCadastro"
+                    class="mensagem-sistema"
                     role="status"
                     aria-live="polite">
-                </p>
+                </div>
 
                 <button
                     type="submit"
-                    class="btn-cadastrar"
-                    id="btnCadastrar">
-                    Criar conta
+                    id="btnCadastrar"
+                    class="botao-principal">
+                    Criar conta <span>→</span>
                 </button>
-
             </form>
+
+            <p class="texto-auxiliar">
+                Já possui uma conta?
+            </p>
 
             <button
                 type="button"
                 id="btnVoltarLogin"
-                class="btn-voltar">
-                Já tenho uma conta
+                class="botao-secundario">
+                Entrar na minha conta
             </button>
 
+            <a href="inicio.html" class="voltar-inicio">
+                ← Voltar para o início
+            </a>
         </section>
-
     </main>
 
-    <script
-        type="module"
-        src="../scripts/cadastro.js">
-    </script>
+    <footer class="rodape">
+        © 2026 NinaPets. Desenvolvido com carinho.
+    </footer>
 
+    <!-- POP-UP -->
+    <div id="popupSucesso" class="popup-fundo">
+        <div class="popup-card">
+            <div class="popup-icone">🐶</div>
+            <h3 id="popupTitulo">Conta criada!</h3>
+            <p id="popupTexto">
+                Sua conta foi criada com sucesso.
+            </p>
+            <button id="popupBotao" class="botao-principal botao-popup">
+                Continuar
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="../scripts/cadastro.js"></script>
 </body>
 </html>
