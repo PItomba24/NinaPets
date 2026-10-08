@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PetFeeder - Recuperar senha</title>
+
+    <link
+        rel="stylesheet"
+        href="../estilos/recuperar-senha.css"
+    >
+</head>
+
+<body>
+
+    <main class="recuperar-container">
+
+        <section class="recuperar-card">
+
+            <div class="logo-circulo">
+                🐾
+            </div>
+
+            <h1>Pet<span>Feeder</span></h1>
+
+            <h2>Recuperar senha</h2>
+
+            <p class="descricao">
+                Digite seu e-mail e enviaremos as instruções
+                para recuperar sua senha.
+            </p>
+
+
+            <form id="recuperarForm">
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-recuperar">
+
+                    Recuperar senha
+
+                </button>
+
+            </form>
+
+
+            <button
+                id="btnVoltarLogin"
+                class="btn-voltar">
+
+                Voltar para o login
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="../scripts/recuperar-senha.js"></script>
+
+</body>
+
+</html>

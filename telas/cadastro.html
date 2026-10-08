@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PetFeeder - Cadastro</title>
+
+    <link rel="stylesheet" href="../estilos/cadastro.css">
+</head>
+
+<body>
+
+    <main class="cadastro-container">
+
+        <section class="cadastro-card">
+
+            <div class="logo-circulo">
+                🐾
+            </div>
+
+            <h1>Pet<span>Feeder</span></h1>
+
+            <h2>Criar conta</h2>
+
+            <p class="descricao">
+                Cadastre-se para começar a utilizar o PetFeeder.
+            </p>
+
+            <form id="cadastroForm">
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="confirmarSenha">
+                        Confirmar senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        placeholder="Digite sua senha novamente"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <p
+                    id="mensagemCadastro"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+                <button
+                    type="submit"
+                    class="btn-cadastrar"
+                    id="btnCadastrar">
+                    Criar conta
+                </button>
+
+            </form>
+
+            <button
+                type="button"
+                id="btnVoltarLogin"
+                class="btn-voltar">
+                Já tenho uma conta
+            </button>
+
+        </section>
+
+    </main>
+
+    <script
+        type="module"
+        src="../scripts/cadastro.js">
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --verde: #158a50;
+    --verde-escuro: #104e32;
+    --verde-claro: #e7f6eb;
+    --texto: #22382c;
+    --cinza: #68796e;
+    --fundo: #f7fbf6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--verde-escuro);
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.marca-icone {
+    background: var(--verde-claro);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 24px;
+}
+
+.destaque {
+    color: var(--verde);
+}
+
+.cabecalho-texto {
+    font-size: 14px;
+    color: var(--cinza);
+    font-weight: 700;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+.principal {
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 5%;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+/* TEXTOS CENTRALIZADOS */
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    animation: aparecer 0.9s ease both;
+}
+
+.selo {
+    display: inline-block;
+    background: var(--verde-claro);
+    color: var(--verde);
+    padding: 9px 17px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-size: clamp(34px, 3.7vw, 49px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: var(--verde-escuro);
+    margin-bottom: 22px;
+}
+
+h1 span {
+    color: var(--verde);
+}
+
+.descricao {
+    max-width: 470px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--cinza);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* =========================
+   BOTÃO ANIMADO
+========================= */
+
+.btn-iniciar {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+
+    min-width: 190px;
+    padding: 16px 32px;
+
+    background: linear-gradient(
+        135deg,
+        #1a9b5b,
+        #117343
+    );
+
+    color: white;
+    border-radius: 16px;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 900;
+    text-decoration: none;
+
+    box-shadow: 0 8px 22px rgba(21, 138, 80, 0.22);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* EFEITO DE BRILHO */
+
+.btn-iniciar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.32),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    transition: left 0.55s ease;
+}
+
+/* AO PASSAR O MOUSE */
+
+.btn-iniciar:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 16px 32px rgba(21, 138, 80, 0.30);
+
+    background: linear-gradient(
+        135deg,
+        #20ae67,
+        #13804c
+    );
+}
+
+.btn-iniciar:hover::before {
+    left: 150%;
+}
+
+/* ANIMAÇÃO DA SETA */
+
+.btn-iniciar span {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.btn-iniciar:hover span {
+    transform: translateX(7px);
+}
+
+/* AO CLICAR */
+
+.btn-iniciar:active {
+    transform: scale(0.93);
+    box-shadow: 0 3px 10px rgba(21, 138, 80, 0.20);
+    transition-duration: 0.1s;
+}
+
+/* ACESSIBILIDADE */
+
+.btn-iniciar:focus-visible {
+    outline: 3px solid var(--verde-escuro);
+    outline-offset: 5px;
+}
+
+.mensagem {
+    margin-top: 25px;
+    font-size: 13px;
+    color: var(--cinza);
+}
+
+/* =========================
+   ILUSTRAÇÃO MENOR
+========================= */
+
+.ilustracao {
+    min-height: 355px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+/* CÍRCULO DE FUNDO */
+
+.circulo-fundo {
+    position: absolute;
+
+    width: 295px;
+    height: 295px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #d5f1db,
+        #a6dbb8
+    );
+
+    box-shadow: 0 20px 50px rgba(30, 100, 58, 0.10);
+}
+
+/* CARTÃO DO PET */
+
+.pet-card {
+    position: relative;
+    z-index: 2;
+
+    width: 250px;
+    padding: 20px;
+
+    border-radius: 25px;
+    background: white;
+
+    box-shadow: 0 18px 45px rgba(18, 80, 42, 0.13);
+
+    text-align: center;
+
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+.pet-emoji {
+    font-size: 78px;
+    padding: 10px 0;
+}
+
+.pet-informacao {
+    padding: 8px;
+}
+
+.status {
+    display: inline-block;
+
+    background: var(--verde-claro);
+    color: var(--verde);
+
+    padding: 7px 10px;
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.pet-informacao h2 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+}
+
+.pet-informacao p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--cinza);
+}
+
+/* ELEMENTOS DECORATIVOS */
+
+.detalhe {
+    position: absolute;
+    z-index: 3;
+    font-size: 28px;
+    animation: flutuar 5s ease-in-out infinite;
+}
+
+.detalhe-um {
+    top: 20px;
+    left: 25px;
+}
+
+.detalhe-dois {
+    top: 55px;
+    right: 20px;
+}
+
+.detalhe-tres {
+    bottom: 20px;
+    right: 35px;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+    padding: 20px;
+    text-align: center;
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 900px) {
+
+    .principal {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    .conteudo {
+        width: 100%;
+    }
+
+    .ilustracao {
+        min-height: 330px;
+    }
+
+    .cabecalho-texto {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .cabecalho {
+        padding: 18px 6%;
+    }
+
+    .principal {
+        padding: 25px 6%;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .descricao {
+        font-size: 15px;
+    }
+
+    .btn-iniciar {
+        min-width: 200px;
+    }
+
+    .ilustracao {
+        min-height: 280px;
+    }
+
+    .circulo-fundo {
+        width: 240px;
+        height: 240px;
+    }
+
+    .pet-card {
+        width: 205px;
+        padding: 14px;
+    }
+
+    .pet-emoji {
+        font-size: 60px;
+    }
+
+    .pet-informacao h2 {
+        font-size: 16px;
+    }
+
+    .detalhe {
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

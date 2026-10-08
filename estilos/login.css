@@ -1,0 +1,324 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #168c4b,
+        #0d6f3b
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.login-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 15px;
+}
+
+.logo-circulo {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #168c4b;
+
+    color: white;
+
+    font-size: 38px;
+}
+
+
+/* =========================
+   NOME
+========================= */
+
+h1 {
+    font-size: 30px;
+
+    color: #168c4b;
+
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #d93636;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+h2 {
+    font-size: 28px;
+
+    color: #222;
+
+    margin-bottom: 8px;
+}
+
+.descricao {
+    color: #777;
+
+    font-size: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+.campo {
+    text-align: left;
+
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+
+    color: #333;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+.campo input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: border-color 0.2s;
+}
+
+.campo input:focus {
+    border-color: #168c4b;
+
+    box-shadow: 0 0 0 2px rgba(22, 140, 75, 0.1);
+}
+
+
+/* =========================
+   BOTÃO ENTRAR
+========================= */
+
+.btn-entrar {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #168c4b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-entrar:hover {
+    background-color: #0d6f3b;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   RECUPERAR SENHA
+========================= */
+
+.link-button {
+    border: none;
+
+    background: none;
+
+    color: #d93636;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    margin-top: 18px;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   DIVISOR
+========================= */
+
+.divisor {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 25px 0;
+}
+
+.divisor::before,
+.divisor::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background-color: #ddd;
+}
+
+.divisor span {
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   CADASTRO
+========================= */
+
+.cadastro-texto {
+    color: #666;
+
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+.btn-cadastro {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 2px solid #168c4b;
+
+    border-radius: 8px;
+
+    background-color: white;
+
+    color: #168c4b;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+.btn-cadastro:hover {
+    background-color: #168c4b;
+
+    color: white;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-card {
+        padding: 30px 25px;
+    }
+}

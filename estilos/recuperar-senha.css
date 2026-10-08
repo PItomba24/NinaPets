@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #168c4b,
+        #0d6f3b
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recuperar-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+.recuperar-card {
+    width: 100%;
+    max-width: 430px;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logo-circulo {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #168c4b;
+
+    color: white;
+
+    font-size: 38px;
+}
+
+h1 {
+    font-size: 30px;
+
+    color: #168c4b;
+
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #d93636;
+}
+
+h2 {
+    font-size: 27px;
+
+    color: #222;
+
+    margin-bottom: 10px;
+}
+
+.descricao {
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+.campo {
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #333;
+
+    margin-bottom: 7px;
+}
+
+.campo input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.campo input:focus {
+    border-color: #168c4b;
+}
+
+.btn-recuperar {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #168c4b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-recuperar:hover {
+    background-color: #0d6f3b;
+}
+
+.btn-voltar {
+    margin-top: 20px;
+
+    border: none;
+
+    background: none;
+
+    color: #d93636;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.btn-voltar:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+
+    .recuperar-container {
+        padding: 15px;
+    }
+
+    .recuperar-card {
+        padding: 30px 25px;
+    }
+}
