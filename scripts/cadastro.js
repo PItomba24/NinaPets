@@ -1,8 +1,7 @@
-import { auth, database } from "./firebase.js";
+import { auth, database, authPersistenceReady } from "./firebase.js";
 
 import {
-    createUserWithEmailAndPassword,
-    signOut
+    createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
 import {
@@ -64,6 +63,7 @@ formulario.addEventListener("submit", async (evento) => {
     let perfilSalvo = false;
 
     try {
+        await authPersistenceReady;
         const resultado = await createUserWithEmailAndPassword(
             auth,
             email,
@@ -79,14 +79,12 @@ formulario.addEventListener("submit", async (evento) => {
 
         perfilSalvo = true;
 
-        await signOut(auth);
-
         formulario.reset();
         exibirMensagem("", "");
 
         abrirPopup(
             "Conta criada com sucesso!",
-            "Agora você já pode entrar no NinaPets com seu e-mail e sua senha."
+            "Sua conta está pronta! Vamos começar cadastrando seu pet."
         );
 
     } catch (erro) {
@@ -130,9 +128,9 @@ formulario.addEventListener("submit", async (evento) => {
 
 popupBotao.addEventListener("click", () => {
     fecharPopup();
-    window.location.href = "login.html";
+    window.ninaNavigate ? window.ninaNavigate("perfil-pet.html") : (window.location.href = "perfil-pet.html");
 });
 
 voltar.addEventListener("click", () => {
-    window.location.href = "login.html";
+    window.ninaNavigate ? window.ninaNavigate("login.html") : (window.location.href = "login.html");
 });

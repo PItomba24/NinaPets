@@ -1,8 +1,9 @@
 
-import { auth } from "./firebase.js";
+import { auth, authPersistenceReady } from "./firebase.js";
 
 import {
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
 const loginForm = document.getElementById("loginForm");
@@ -46,7 +47,8 @@ loginForm.addEventListener("submit", async function (event) {
 
     try {
 
-        // Autenticar usuário no Firebase
+        // Mantém a sessão neste navegador e autentica o usuário.
+        await authPersistenceReady;
         const credenciais = await signInWithEmailAndPassword(
             auth,
             email,
@@ -62,10 +64,9 @@ loginForm.addEventListener("submit", async function (event) {
             "green"
         );
 
-        // Redirecionamento provisório.
-        // Substituir pela página principal quando ela for criada.
+        // Abrir o painel principal do alimentador.
         setTimeout(() => {
-            window.location.href = "inicio.html";
+            window.ninaNavigate ? window.ninaNavigate("perfil-pet.html") : (window.location.href = "perfil-pet.html");
         }, 1000);
 
     } catch (error) {
@@ -127,7 +128,7 @@ loginForm.addEventListener("submit", async function (event) {
 ========================= */
 
 btnCadastro.addEventListener("click", function () {
-    window.location.href = "cadastro.html";
+    window.ninaNavigate ? window.ninaNavigate("cadastro.html") : (window.location.href = "cadastro.html");
 });
 
 
@@ -136,5 +137,10 @@ btnCadastro.addEventListener("click", function () {
 ========================= */
 
 btnRecuperar.addEventListener("click", function () {
-    window.location.href = "recuperar-senha.html";
+    window.ninaNavigate ? window.ninaNavigate("recuperar-senha.html") : (window.location.href = "recuperar-senha.html");
+});
+
+// Se a pessoa já estiver conectada, não exige novo login.
+onAuthStateChanged(auth, usuario => {
+    if (usuario) (window.ninaNavigate ? window.ninaNavigate("perfil-pet.html", { replace: true }) : window.location.replace("perfil-pet.html"));
 });

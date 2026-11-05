@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NinaPets | Simulador (sem motor)</title>
+  <link rel="stylesheet" href="../estilos/simulador.css">
+  <script type="module" src="../scripts/simulador.js"></script>
+</head>
+<body>
+  <main class="sim-wrap">
+    <header class="sim-header"><div class="logo">🐾 Nina<span>Pets</span></div><a href="alimentador.html">Voltar à visão geral</a></header>
+    <section class="sim-card">
+      <div class="sim-icon" aria-hidden="true">🐶 <span>💚</span> 🐱</div>
+      <span class="sim-label">AMBIENTE DE TESTES</span>
+      <h1>Simulador de alimentação</h1>
+      <p>Teste a comunicação do site com o Firebase <strong>sem ESP32 e sem servomotor</strong>. Nenhuma ração será liberada.</p>
+      <div class="sim-warning">🧪 Este é um teste de programação. A confirmação <strong>não significa que o animal foi alimentado</strong>.</div>
+      <p id="conta" class="sim-account">Verificando sua conta...</p>
+      <p id="status" class="sim-status" role="status" aria-live="polite">Aguardando...</p>
+      <div class="sim-buttons"><button id="ligar" type="button" disabled>▶ Iniciar simulação</button><button id="desligar" type="button" disabled>■ Parar simulação</button></div>
+      <h2>Comandos recebidos</h2>
+      <ol id="log"><li>Nenhum comando neste teste.</li></ol>
+    </section>
+    <section class="sim-how">
+      <h2>Como testar</h2>
+      <p><strong>1.</strong> Clique em <b>Iniciar simulação</b> nesta aba.</p>
+      <p><strong>2.</strong> Volte à aba do NinaPets, abra <b>Visão geral</b> e escolha uma quantidade de 1 a 150 g.</p>
+      <p><strong>3.</strong> Clique em <b>Solicitar alimentação</b> e volte aqui para conferir o comando recebido.</p>
+      <p><strong>4.</strong> No site deve aparecer <b>Teste concluído</b> — sem movimentar motor.</p>
+    </section>
+    <footer>💚 NinaPets · Teste de integração, não alimentação real</footer>
+  </main>
+</body>
+</html>

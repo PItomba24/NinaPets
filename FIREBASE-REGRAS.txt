@@ -1,0 +1,17 @@
+REGRAS FIREBASE DO NINAPETS COM ESP32
+
+O arquivo atualizado e FIREBASE-REGRAS-ESP32.json.
+
+O arquivo de regras antigo (somente proprietario) nao e suficiente para que um dispositivo
+com autenticacao anonima confirme comandos.
+
+Use o Firebase Console > Realtime Database > Regras e revise o conteudo de
+FIREBASE-REGRAS-ESP32.json. Antes de mudar as regras, salve a versao atual.
+Se voce tem outros nos ou outras funcoes no projeto, mescle as regras existentes;
+nao substitua cegamente a configuracao do banco.
+
+O site continua lendo e escrevendo apenas em usuarios/UID_DA_CONTA/ninapets.
+O dispositivo autenticado tem acesso restrito a status e comandos da conta a que foi
+vinculado. Para testes sem placa, o simulador usa a propria sessao da conta.
+
+Nunca use .read=true ou .write=true em producao.

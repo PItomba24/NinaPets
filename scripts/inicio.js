@@ -2,6 +2,6 @@ const btnIniciar = document.getElementById("btnIniciar");
 
 btnIniciar.addEventListener("click", function () {
 
-    window.location.href = "login.html";
+    window.ninaNavigate ? window.ninaNavigate("login.html") : (window.location.href = "login.html");
 
 });

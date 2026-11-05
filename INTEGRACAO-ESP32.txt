@@ -1,0 +1,10 @@
+A integração atual do NinaPets usa Firebase Realtime Database, não IP local do ESP32.
+Passos de teste no site, sem motor:
+1. Inicie o site pelo VS Code / Live Server e entre na conta.
+2. Em Visão geral, encontre "Conectar alimentador ESP32".
+3. Clique em "Abrir simulador de alimentador".
+4. Na nova aba, clique em "Iniciar simulação".
+5. Deixe a aba aberta e, na Visão geral, clique em "Solicitar alimentação".
+6. Confira a confirmação no simulador e na visão geral. Nenhum servo será acionado.
+7. Para usar o ESP32 real, consulte o guia do firmware e vincule o UID do dispositivo no site.
+OBS: Os horários são salvos no Firebase, mas ainda não disparam o motor automaticamente.

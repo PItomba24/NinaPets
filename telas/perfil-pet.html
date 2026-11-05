@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f8f2">
+  <title>NinaPets | Alimentador</title>
+  <link rel="stylesheet" href="../estilos/alimentador.css">
+  <script src="../scripts/transicoes.js" defer></script>
+
+  <script type="module" src="../scripts/alimentador.js" defer></script>
+    <link rel="stylesheet" href="../estilos/experiencia.css">
+</head>
+<body data-page="perfil">
+  <header class="topbar">
+    <a class="marca" href="inicio.html"><span class="marca-icone">🐾</span><span>Nina<span class="destaque">Pets</span></span></a>
+    <div class="top-actions"><span class="usuario-status"><i></i> Área do tutor</span><button id="btnSair" class="btn-sair" type="button">Sair</button></div>
+  </header>
+  <nav class="menu-paginas" aria-label="Navegação principal">
+    <a href="perfil-pet.html" data-nav="perfil">1. Meu pet</a>
+    <a href="alimentador.html" data-nav="painel">2. Visão geral</a>
+    <a href="horarios.html" data-nav="agenda">3. Horários</a>
+    <a href="historico.html" data-nav="historico">4. Histórico</a>
+  </nav>
+
+  <main class="container">
+    <section class="boas-vindas">
+      <div><span class="eyebrow">PAINEL DE CONTROLE</span><h1>O cuidado do seu pet, <span>mais simples.</span></h1><p>Gerencie as refeições e organize a rotina do seu melhor amigo.</p></div>
+      <div class="pet-ilustracao" aria-hidden="true">🐶</div>
+    </section>
+
+    <div class="aviso-demo"><span>ⓘ</span><p><strong>Prévia do site:</strong> os dados ficam salvos no Firebase. Teste os comandos no simulador; a liberação física depende da montagem do alimentador.</p></div>
+
+    <section class="painel-card lista-perfis-card">
+      <div class="titulo-card"><div><span class="eyebrow">SUA FAMÍLIA DE PETS</span><h2>Perfis dos seus animais</h2></div><span class="titulo-emoji">🐾</span></div>
+      <p class="texto-card">Cada animal tem seu próprio perfil, horários e histórico. Selecione um para consultar ou cadastrar outro.</p>
+      <div id="listaPerfisPets" class="lista-perfis-pets"><p class="vazio">Carregando seus animais...</p></div>
+      <button id="novoPetBtn" class="btn-principal btn-novo-pet" type="button">＋ Adicionar outro animal</button>
+    </section>
+
+    <section class="painel-card perfil-card">
+      <div class="titulo-card"><div><span class="eyebrow">MEU COMPANHEIRO</span><h2>Dados do pet</h2></div><span class="titulo-emoji">🐾</span></div>
+      <p class="texto-card">Cadastre as informações do seu animal para organizar melhor a rotina de alimentação.</p>
+      <form id="formPet" class="perfil-form">
+        <div class="campo"><label for="nomePet">Nome do pet</label><input id="nomePet" type="text" maxlength="40" placeholder="Ex.: Nina" required></div>
+        <div class="campo"><label for="especiePet">Animal</label><select id="especiePet"><option value="Cachorro">Cachorro</option><option value="Gato">Gato</option><option value="Pássaro">Pássaro</option><option value="Coelho">Coelho</option><option value="Hamster">Hamster</option><option value="Porquinho-da-índia">Porquinho-da-índia</option><option value="Tartaruga">Tartaruga</option><option value="Peixe">Peixe</option><option value="Furão">Furão</option><option value="Outro">Outro</option></select></div>
+        <div class="campo"><label for="idadePet">Idade</label><input id="idadePet" type="text" maxlength="30" placeholder="Ex.: 2 anos"></div>
+        <div class="campo"><label for="pesoPet">Peso (kg)</label><input id="pesoPet" type="number" min="0.1" max="200" step="0.1" placeholder="Ex.: 8,5"></div>
+        <div class="campo"><label for="portePet">Porte do animal</label><select id="portePet"><option value="">Selecione o porte</option><option value="Pequeno">Pequeno</option><option value="Médio">Médio</option><option value="Grande">Grande</option><option value="Não se aplica">Não se aplica</option></select><small class="ajuda-campo">Para cães, use o porte adulto esperado. Para outras espécies, escolha “Não se aplica” se preferir.</small></div>
+        <div class="campo campo-largo"><label for="observacoesPet">Observações (opcional)</label><input id="observacoesPet" type="text" maxlength="180" placeholder="Preferências ou cuidados importantes"></div>
+        <button class="btn-adicionar btn-salvar-perfil" type="submit">Salvar dados do pet</button>
+      </form>
+      <p id="mensagemPet" class="mensagem" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="painel-card sugestao-racao-card">
+      <div class="titulo-card"><div><span class="eyebrow">SUGESTÃO OPCIONAL</span><h2>Quanto de ração oferecer?</h2></div><span class="titulo-emoji">🥣</span></div>
+      <p class="texto-card">Informe a energia indicada na embalagem da ração para estimar uma quantidade diária e dividir pelas refeições. O cálculo é apenas uma referência inicial, não substitui a orientação de um veterinário.</p>
+      <div class="calculadora-racao">
+        <div class="campo"><label for="energiaRacao">Energia da ração (kcal por 100 g)</label><input id="energiaRacao" type="number" min="1" max="1000" step="1" placeholder="Ex.: 380"></div>
+        <div class="campo"><label for="refeicoesDia">Refeições por dia</label><input id="refeicoesDia" type="number" min="1" max="12" step="1" value="2"></div>
+        <div class="campo"><label for="fatorEnergetico">Perfil de energia (estimativa)</label><select id="fatorEnergetico"><option value="1.6">Cão adulto — referência inicial</option><option value="1.2">Gato adulto — referência inicial</option></select></div>
+        <button id="calcularRacao" class="btn-principal" type="button">Calcular sugestão</button>
+      </div>
+      <div id="resultadoRacao" class="resultado-racao" aria-live="polite">Preencha o peso do pet e a energia da ração para ver uma estimativa.</div>
+      <p class="aviso-racao">A necessidade real muda conforme espécie, idade, castração, atividade, saúde e composição do alimento. Não use esta estimativa para filhotes, animais doentes, gestantes ou espécies diferentes de cães e gatos. Confirme a porção com um veterinário e com as instruções da embalagem.</p>
+    </section>
+
+    <section class="resumo-grid" aria-label="Resumo do alimentador">
+      <article class="resumo-card"><span class="resumo-icone verde">🕒</span><div><p>Próxima refeição</p><strong id="proximaRefeicao">Nenhuma programada</strong></div></article>
+      <article class="resumo-card"><span class="resumo-icone amarelo">📅</span><div><p>Refeições por dia</p><strong id="totalHorarios">0 horários</strong></div></article>
+      <article class="resumo-card"><span class="resumo-icone rosa">🍽️</span><div><p>Comandos manuais</p><strong id="totalManuais">0 nesta sessão</strong></div></article>
+    </section>
+
+    <section class="painel-card calculo-card">
+      <div class="titulo-card"><div><span class="eyebrow">LEMBRETE OPCIONAL</span><h2>Quando será a próxima refeição?</h2></div><span class="titulo-emoji">⏳</span></div>
+      <p class="texto-card">O tutor pode registrar quando o pet comeu e escolher em quantas horas deseja receber a previsão. É apenas um lembrete, não uma recomendação veterinária.</p>
+      <div class="calculo-linha">
+        <div class="campo"><label for="intervaloHoras">Intervalo entre refeições</label><div class="input-com-sufixo"><input id="intervaloHoras" type="number" min="1" max="48" value="8"><span>horas</span></div></div>
+        <button id="salvarIntervalo" class="btn-filtro" type="button">Salvar intervalo</button>
+      </div>
+      <p id="ultimaRefeicao" class="texto-card">Ainda não há uma refeição registrada.</p>
+      <button id="registrarComeu" class="btn-principal" type="button">✓ Registrar que meu pet comeu agora</button>
+      <p id="previsaoRefeicao" class="mensagem" role="status" aria-live="polite">Ative o lembrete registrando uma refeição.</p>
+    </section>
+
+    <div class="conteudo-grid">
+      <section class="painel-card manual-card">
+        <div class="titulo-card"><div><span class="eyebrow">ALIMENTAÇÃO</span><h2>Liberar ração</h2></div><span class="titulo-emoji">🥣</span></div>
+        <p class="texto-card">Escolha a quantidade e envie um comando de alimentação manual.</p>
+        <label for="quantidade">Quantidade de ração</label>
+        <div class="quantidade-linha"><input id="quantidade" type="number" min="1" max="150" step="1" value="50"><span>gramas (g)</span></div>
+        <div class="atalhos-quantidade"><button type="button" data-gramas="25">25 g</button><button type="button" data-gramas="50" class="selecionado">50 g</button><button type="button" data-gramas="100">100 g</button></div>
+        <button id="btnLiberar" class="btn-principal" type="button">🥣 Solicitar alimentação</button>
+        <p id="mensagemManual" class="mensagem" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="painel-card agenda-card">
+        <div class="titulo-card"><div><span class="eyebrow">ROTINA DO PET</span><h2>Programar refeições</h2></div><span class="titulo-emoji">🗓️</span></div>
+        <p class="texto-card">Adicione os horários em que seu pet deverá receber ração.</p>
+        <form id="formHorario" class="form-horario">
+          <div class="campo"><label for="horario">Horário</label><input id="horario" type="time" value="08:00" required></div>
+          <div class="campo"><label for="gramasHorario">Quantidade</label><div class="input-com-sufixo"><input id="gramasHorario" type="number" min="1" max="500" value="50" required><span>g</span></div></div>
+          <button class="btn-adicionar" type="submit" aria-label="Adicionar horário">＋</button>
+        </form>
+        <p id="mensagemHorario" class="mensagem" role="status" aria-live="polite"></p>
+        <div class="lista-cabecalho"><h3>Seus horários</h3><span id="contadorAgenda">0 itens</span></div>
+        <p class="dica-agenda">Você pode editar ou remover cada refeição. A quantidade de horários cadastrados representa as refeições diárias planejadas.</p>
+        <ul id="listaHorarios" class="lista-horarios"><li class="vazio">Nenhum horário cadastrado.</li></ul>
+      </section>
+    </div>
+
+    <section class="painel-card historico-card">
+      <div class="titulo-card"><div><span class="eyebrow">ACOMPANHAMENTO</span><h2>Histórico de alimentações</h2></div><span class="titulo-emoji">📋</span></div>
+      <div class="filtro-historico"><div class="campo"><label for="filtroData">Consultar por data</label><input id="filtroData" type="date"></div><button id="limparFiltro" class="btn-filtro" type="button">Mostrar tudo</button></div>
+      <p id="resumoHistorico" class="texto-card texto-historico">Registros salvos neste navegador.</p>
+      <ul id="historico" class="historico-lista"><li class="vazio">Nenhuma alimentação registrada.</li></ul>
+    </section>
+    <footer class="rodape">© 2026 NinaPets. Desenvolvido com carinho. 🐾</footer>
+  </main>
+    
+</body>
+</html>

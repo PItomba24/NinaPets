@@ -1,0 +1,37 @@
+NINAPETS: TESTAR A PROGRAMACAO ANTES DE MONTAR O ALIMENTADOR
+
+ESTE ZIP CONTEM O SITE EXISTENTE E O PROGRAMA DO ESP32.
+O cadastro dos animais, login e configuracao Firebase do site foram preservados.
+
+OPCAO A — TESTE SEM PRECISAR PLUGAR O ESP32 (MAIS SIMPLES)
+1. Extraia ZIP numa pasta NOVA; abra NinaPets-Atualizado no VS Code.
+2. Execute index.html usando Live Server. Entre na sua conta.
+3. Clique em Visao geral > Conectar alimentador ESP32 > Abrir simulador de alimentador.
+4. Na nova aba, clique em Iniciar simulacao. Deixe essa aba aberta.
+5. Volte ao NinaPets, selecione um pet, escolha 25g e clique Solicitar alimentacao.
+6. Verifique a confirmacao SIMULADA nas duas abas. Nenhuma racao foi liberada.
+
+OPCAO B — TESTE COM ESP32 PLUGADO APENAS AO COMPUTADOR (SEM SERVO)
+1. Siga o guia firmware-ESP32/LEIA-ME-ESP32.txt.
+2. MODO_SIMULACAO deve permanecer true.
+3. Ligue o ESP32 por USB, envie o firmware no Arduino IDE e vincule o UID da placa no site.
+4. Envie comando pelo site e observe a confirmacao no Monitor Serial.
+
+FIREBASE:
+- O projeto usa o mesmo Firebase existente: ninapets-7d65f (Realtime Database).
+- Antes do teste, habilite Authentication > Anonimo e revise regras do Realtime Database.
+- O arquivo FIREBASE-REGRAS-ESP32.json propoe regras de protecao para cada usuario e dispositivo.
+- Nao publique regras sem fazer backup e verificar se possui outras colecoes no banco.
+- Os dados continuam separados por UID de conta e pet.
+
+LIMITACOES DESTA ETAPA:
+- Sem servo ligado, NADA de racao fisica; nao e alimentacao real.
+- Horarios salvos nao disparam alimentacao automatica (futura etapa).
+- Na fase fisica sera preciso calibrar gramas, motor e energia e reforcar a seguranca TLS.
+
+ARQUIVOS:
+- site: telas/, scripts/, estilos/ e index.html
+- firmware: firmware-ESP32/NinaPets_ESP32.ino
+- regras: FIREBASE-REGRAS-ESP32.json
+
+Guarde o projeto antigo intacto em outra pasta.

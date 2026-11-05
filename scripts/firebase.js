@@ -1,8 +1,5 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-
-import { getAuth } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-
+import { getAuth, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -16,9 +13,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
+// Mantém a sessão no navegador mesmo depois de fechar e abrir o site.
+const authPersistenceReady = setPersistence(auth, browserLocalPersistence);
 const database = getDatabase(app);
 
-export { app, auth, database };
-
+export { app, auth, database, authPersistenceReady };

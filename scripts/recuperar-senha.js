@@ -87,9 +87,9 @@ formulario.addEventListener("submit", async (evento) => {
 
 popupBotao.addEventListener("click", () => {
     fecharPopup();
-    window.location.href = "login.html";
+    window.ninaNavigate ? window.ninaNavigate("login.html") : (window.location.href = "login.html");
 });
 
 voltar.addEventListener("click", () => {
-    window.location.href = "login.html";
+    window.ninaNavigate ? window.ninaNavigate("login.html") : (window.location.href = "login.html");
 });

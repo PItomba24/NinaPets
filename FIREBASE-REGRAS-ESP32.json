@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "usuarios": {
+      "$uid": {
+        "ninapets": {
+          "dispositivo": {
+            "uid": {
+              ".read": "auth != null && (auth.uid === $uid || auth.uid === data.val())",
+              ".write": "auth != null && auth.uid === $uid"
+            },
+            "status": {
+              ".read": "auth != null && auth.uid === $uid",
+              ".write": "auth != null && (auth.uid === $uid || auth.uid === root.child('usuarios').child($uid).child('ninapets').child('dispositivo').child('uid').val())"
+            }
+          },
+          "comandos": {
+            ".read": "auth != null && (auth.uid === $uid || auth.uid === root.child('usuarios').child($uid).child('ninapets').child('dispositivo').child('uid').val())",
+            "$cmd": {
+              ".write": "auth != null && (auth.uid === $uid || (auth.uid === root.child('usuarios').child($uid).child('ninapets').child('dispositivo').child('uid').val() && data.exists() && newData.child('tipo').val() === data.child('tipo').val() && newData.child('petId').val() === data.child('petId').val() && newData.child('gramas').val() === data.child('gramas').val() && newData.child('criadoEm').val() === data.child('criadoEm').val()))"
+            }
+          },
+          "$outros": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid"
+          },
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    }
+  }
+}

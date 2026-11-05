@@ -1,0 +1,7 @@
+NinaPets - Tela de carregamento em tela cheia
+
+Todas as navegacoes internas usam tela cheia por aproximadamente 3 segundos (contados desde o clique), com mensagens por secao. A duracao pode variar caso o navegador/rede demore mais a carregar.
+
+Teste com VS Code Live Server: abra index.html, entre e navegue entre Meu Pet, Visao Geral, Horarios e Historico.
+
+Os dados e a configuracao Firebase existentes foram preservados.

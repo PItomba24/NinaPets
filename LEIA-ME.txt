@@ -1,0 +1,57 @@
+NINAPETS - VERSAO ATUALIZADA
+
+COMO ABRIR
+1. Extraia esta pasta sem apagar a pasta da versao antiga.
+2. Abra a pasta NinaPets-Atualizado no Visual Studio Code.
+3. Abra o arquivo index.html com a extensao Live Server.
+4. Entre com sua conta normalmente.
+
+PAGINAS
+- Visao geral: telas/alimentador.html
+- Meu pet: telas/perfil-pet.html
+- Horarios: telas/horarios.html
+- Historico: telas/historico.html
+
+MELHORIAS DESTA VERSAO
+- Navegacao separada por paginas.
+- Layout responsivo para celular, tablet e computador.
+- Textos explicativos e titulos mais claros.
+- Botoes e campos maiores para facilitar o toque no celular.
+- Cadastro de vários animais na mesma conta, com perfis independentes.
+- Cada pet mantém seus próprios horários, histórico, última refeição e preferências.
+- Seletor de pet no topo das páginas para alternar entre os animais.
+- Área “Meu pet” com cartões individuais para abrir, adicionar e excluir perfis.
+- Janela de confirmação da conta autenticada, com e-mail parcialmente oculto e opção de trocar de conta.
+- Previsao opcional da proxima refeicao com base no ultimo horario registrado e no intervalo escolhido pelo tutor.
+
+IMPORTANTE
+Os dados de perfil, horarios, historico e previsoes sao salvos no Firebase Realtime Database, separados por conta e por animal. A previsao e um lembrete configurado pelo tutor, nao uma recomendacao veterinaria. O botao de alimentacao pode ser testado com simulador via Firebase ou com ESP32 no modo simulacao. Nenhum motor e acionado ate a montagem fisica e calibracao.
+
+Mantenha a pasta do projeto antigo separada. Esta pasta e uma versao independente e nao sobrescreve a anterior.
+
+INTEGRACAO COM FIREBASE
+- O projeto reutiliza a configuracao que ja existe em scripts/firebase.js.
+- Perfil do pet, horarios, historico, ultima refeicao e intervalo de previsao sao salvos no Realtime Database em usuarios/UID/ninapets/animais/ID_DO_PET/ e a seleção atual em usuarios/UID/ninapets/config/animalAtivo.
+- Cada conta tem seus proprios dados; uma pessoa nao usa o cadastro de outra.
+- A sessao do Firebase usa persistencia local do navegador. Ao voltar ao site no mesmo navegador, a pessoa continua conectada, ate sair manualmente, limpar os dados do navegador ou o Firebase invalidar a sessao.
+- Contas novas nao devem herdar pets de outra conta ou do armazenamento local de outro tutor.
+- Configure e revise as regras conforme FIREBASE-REGRAS-ESP32.json antes de testar a gravacao/leitura. Faca backup das regras anteriores.
+
+ORDEM INICIAL
+- Depois de entrar ou criar uma conta, o site abre primeiro a pagina Meu pet (perfil-pet.html).
+- A navegacao segue: Meu pet, Visao geral, Horarios e Historico.
+
+
+Design atualizado: consulte INTEGRACAO-ESP32.txt para a ponte HTTP e configuração do ESP32.
+
+NAVEGACAO E TRANSICOES
+- As quatro áreas internas agora exibem conteúdo próprio: Meu pet, Visão geral, Horários e Histórico.
+- O menu superior permite alternar diretamente entre as quatro páginas.
+- Links da marca, botões de login/cadastro/recuperação, saída da conta e troca de perfil usam a mesma transição.
+- A página atual fica destacada no menu.
+- A animação respeita a preferência de redução de movimento do dispositivo.
+
+PROGRAMACAO SEM MONTAGEM
+- Consulte LEIA-ME-PRIMEIRO.txt.
+- O modo simulacao nao conta como uma refeicao real.
+- Horarios nao disparam automaticamente o motor nesta etapa.
